@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "id": "user_1",
+      "username": "0022C0013",
+      "password": "079eUI&H",
+      "balance": 37.43,
+      "name": "0022C0013",
+      "apiKey": "Regenerate"
+    }
+  ],
+  "campaigns": [],
+  "statistics": {
+    "daily": [
+      {
+        "date": "2024-02-01",
+        "count": 120
+      },
+      {
+        "date": "2024-02-02",
+        "count": 450
+      },
+      {
+        "date": "2024-02-03",
+        "count": 320
+      },
+      {
+        "date": "2024-02-04",
+        "count": 210
+      },
+      {
+        "date": "2024-02-05",
+        "count": 560
+      }
+    ]
+  }
+}
