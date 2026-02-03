@@ -45,10 +45,21 @@ export default function Header() {
                 <div style={{ cursor: 'pointer' }}>🔔</div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', position: 'relative' }} className="group">
-                    <span onClick={() => switchLanguage(language === 'en' ? 'zh' : 'en')}>
-                        {language === 'en' ? 'English' : 'Chinese'}
-                    </span>
-                    <span>▼</span>
+                    <select
+                        value={language}
+                        onChange={(e) => switchLanguage(e.target.value)}
+                        style={{
+                            background: 'transparent',
+                            border: 'none',
+                            color: '#64748b',
+                            fontSize: '14px',
+                            cursor: 'pointer',
+                            outline: 'none'
+                        }}
+                    >
+                        <option value="en">English</option>
+                        <option value="zh">中文 (Chinese)</option>
+                    </select>
                 </div>
 
                 <div style={{ position: 'relative' }}>

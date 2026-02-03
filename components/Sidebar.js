@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { useLanguage } from '@/context/LanguageContext';
 
 const icons = {
     dashboard: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>,
@@ -15,36 +16,37 @@ const icons = {
 export default function Sidebar() {
     const pathname = usePathname();
     const [expanded, setExpanded] = useState({ campaign: true });
+    const { t } = useLanguage();
 
     const toggle = (key) => setExpanded(p => ({ ...p, [key]: !p[key] }));
 
     return (
         <div className="sidebar" style={{ minHeight: '100vh', padding: '20px 0' }}>
             <div style={{ padding: '0 24px', marginBottom: '32px' }}>
-                <h2 style={{ fontSize: '20px', fontWeight: 'bold' }}>SMS Platform</h2>
+                <h2 style={{ fontSize: '20px', fontWeight: 'bold' }}>{t('smsPlatform')}</h2>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                <NavItem href="/dashboard" icon={icons.dashboard} label="Dashboard" active={pathname === '/dashboard'} />
+                <NavItem href="/dashboard" icon={icons.dashboard} label={t('dashboard')} active={pathname === '/dashboard'} />
 
-                <NavItem href="/pricing" icon={icons.chart} label="SMS Pricing" active={pathname === '/pricing'} />
+                <NavItem href="/pricing" icon={icons.chart} label={t('pricing')} active={pathname === '/pricing'} />
 
                 {/* Campaign Group */}
                 <div onClick={() => toggle('campaign')} style={{ cursor: 'pointer' }}>
-                    <NavItem href="#" icon={icons.mail} label="New Campaign" hasSub safeClick />
+                    <NavItem href="#" icon={icons.mail} label={t('newCampaign')} hasSub safeClick />
                 </div>
                 {expanded.campaign && (
                     <div style={{ paddingLeft: '44px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                        <NavItem href="/campaign" label="New Campaign" active={pathname === '/campaign'} small />
-                        <NavItem href="#" label="Dynamic Templates" small disabled />
-                        <NavItem href="#" label="Message Queue" small disabled />
-                        <NavItem href="#" label="SMS Batches" small disabled />
+                        <NavItem href="/campaign" label={t('newCampaign')} active={pathname === '/campaign'} small />
+                        <NavItem href="#" label={t('dynamicTemplates')} small disabled />
+                        <NavItem href="#" label={t('messageQueue')} small disabled />
+                        <NavItem href="#" label={t('smsBatches')} small disabled />
                     </div>
                 )}
 
 
 
-                <NavItem href="/statistics" icon={icons.bar} label="Statistics" active={pathname === '/statistics'} hasSub />
+                <NavItem href="/statistics" icon={icons.bar} label={t('statistics')} active={pathname === '/statistics'} hasSub />
 
 
             </div>

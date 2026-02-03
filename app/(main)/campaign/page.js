@@ -94,9 +94,9 @@ export default function NewCampaign() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px', color: '#64748b' }}>
                 <span>🏠</span>
                 <span>/</span>
-                <span>New Campaign</span>
+                <span>{t('newCampaign')}</span>
                 <span>/</span>
-                <span>New Campaign</span>
+                <span>{t('newCampaign')}</span>
             </div>
 
             <div className="card">
@@ -107,7 +107,7 @@ export default function NewCampaign() {
 
                         {/* Type Selection */}
                         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                            <label style={{ width: '100px', fontWeight: 500 }}>Type:</label>
+                            <label style={{ width: '100px', fontWeight: 500 }}>{t('type')}:</label>
                             <div style={{ display: 'flex', gap: '20px' }}>
                                 <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
                                     <input
@@ -115,7 +115,7 @@ export default function NewCampaign() {
                                         name="type"
                                         checked={type === 'SMS'}
                                         onChange={() => setType('SMS')}
-                                    /> SMS
+                                    /> {t('sms')}
                                 </label>
                                 <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
                                     <input
@@ -123,7 +123,7 @@ export default function NewCampaign() {
                                         name="type"
                                         checked={type === 'MMS'}
                                         onChange={() => setType('MMS')}
-                                    /> MMS
+                                    /> {t('mms')}
                                 </label>
                             </div>
                         </div>
@@ -134,16 +134,16 @@ export default function NewCampaign() {
                             placeholder={t('time')}
                             className="input-field"
                             disabled
-                            value={numbers ? `Estimated: ${Math.max(1, Math.ceil(numbers.split(/[\r\n,]+/).filter(s => s.trim()).length / 150))}s` : ''}
+                            value={numbers ? `${t('estimated')}: ${Math.max(1, Math.ceil(numbers.split(/[\r\n,]+/).filter(s => s.trim()).length / 150))}s` : ''}
                         />
 
                         {/* Number Input */}
                         <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
-                            <label style={{ width: '100px', fontWeight: 500, paddingTop: '10px' }}>Number:</label>
+                            <label style={{ width: '100px', fontWeight: 500, paddingTop: '10px' }}>{t('number')}:</label>
                             <textarea
                                 className="input-field"
                                 rows={4}
-                                placeholder="Enter or paste phone numbers, comma required"
+                                placeholder={t('enterNumbers')}
                                 value={numbers}
                                 onChange={e => setNumbers(e.target.value)}
                             ></textarea>
@@ -151,15 +151,14 @@ export default function NewCampaign() {
 
                         {/* Number Files */}
                         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                            <label style={{ width: '100px', fontWeight: 500 }}>Number files ❔:</label>
+                            <label style={{ width: '100px', fontWeight: 500 }}>{t('numberFiles')} ❔:</label>
                             <div style={{ flex: 1 }}>
                                 <label className="btn btn-primary" style={{ display: 'block', textAlign: 'center', cursor: 'pointer', background: '#93c5fd' }}>
-                                    Click to upload
+                                    {t('clickToUpload')}
                                     <input type="file" style={{ display: 'none' }} onChange={handleFileUpload} accept=".txt,.csv" />
                                 </label>
                                 <p style={{ fontSize: '12px', color: '#94a3b8', marginTop: '8px' }}>
-                                    Accept file types: .txt, .csv <br />
-                                    txt file: one number per line
+                                    {t('fileTypesInfo')}
                                 </p>
                             </div>
                         </div>
@@ -167,7 +166,7 @@ export default function NewCampaign() {
                         {/* MMS Attachment - Only show if MMS */}
                         {type === 'MMS' && (
                             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
-                                <label style={{ width: '100px', fontWeight: 500, paddingTop: '10px' }}>MMS attachment ❔:</label>
+                                <label style={{ width: '100px', fontWeight: 500, paddingTop: '10px' }}>{t('mmsAttachment')} ❔:</label>
                                 <div style={{ flex: 1 }}>
                                     <div style={{ display: 'flex', gap: '10px', marginBottom: '8px', flexWrap: 'wrap' }}>
                                         {mmsFiles.map((f, i) => (
@@ -194,23 +193,23 @@ export default function NewCampaign() {
                                             </label>
                                         ))}
                                     </div>
-                                    <p style={{ fontSize: '12px', color: '#3b82f6' }}>{mmsFiles.reduce((acc, f) => acc + f.size, 0) / 1024 > 100 ? 'Size Exceeded' : `${(mmsFiles.reduce((acc, f) => acc + f.size, 0) / 1024).toFixed(2)}KB/100KB Total size of all files`}</p>
+                                    <p style={{ fontSize: '12px', color: '#3b82f6' }}>{mmsFiles.reduce((acc, f) => acc + f.size, 0) / 1024 > 100 ? t('sizeExceeded') : `${(mmsFiles.reduce((acc, f) => acc + f.size, 0) / 1024).toFixed(2)}KB/100KB ${t('totalSize')}`}</p>
                                 </div>
                             </div>
                         )}
                         {/* Sender ID */}
                         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                            <label style={{ width: '100px', fontWeight: 500 }}>SenderId ❔:</label>
-                            <input type="text" placeholder="Select the consumer user..." className="input-field" />
+                            <label style={{ width: '100px', fontWeight: 500 }}>{t('senderId')} ❔:</label>
+                            <input type="text" placeholder={t('selectConsumer')} className="input-field" />
                         </div>
 
                         {/* MMS Title - Only show if MMS */}
                         {type === 'MMS' && (
                             <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                                <label style={{ width: '100px', fontWeight: 500 }}>MMS title:</label>
+                                <label style={{ width: '100px', fontWeight: 500 }}>{t('mmsTitle')}:</label>
                                 <input
                                     type="text"
-                                    placeholder="When the message type is MMS, the value is valid"
+                                    placeholder={t('mmsTitlePlaceholder')}
                                     className="input-field"
                                     value={mmsTitle}
                                     onChange={(e) => setMmsTitle(e.target.value)}
@@ -220,11 +219,11 @@ export default function NewCampaign() {
 
                         {/* Content */}
                         <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
-                            <label style={{ width: '100px', fontWeight: 500, paddingTop: '10px' }}>Content:</label>
+                            <label style={{ width: '100px', fontWeight: 500, paddingTop: '10px' }}>{t('content')}:</label>
                             <textarea
                                 className="input-field"
                                 rows={4}
-                                placeholder={type === 'MMS' ? "MMS attachment or content must be filled in." : "SMS content is required."}
+                                placeholder={type === 'MMS' ? t('mmsContentPlaceholder') : t('smsContentPlaceholder')}
                                 value={content}
                                 onChange={e => setContent(e.target.value)}
                             ></textarea>
@@ -232,10 +231,10 @@ export default function NewCampaign() {
 
                         {/* Replace Options */}
                         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                            <label style={{ width: '100px', fontWeight: 500 }}>Replace keyword ❔:</label>
+                            <label style={{ width: '100px', fontWeight: 500 }}>{t('replaceKeyword')} ❔:</label>
                             <input
                                 type="text"
-                                placeholder="What needs to be replaced"
+                                placeholder={t('replaceKeywordPlaceholder')}
                                 className="input-field"
                                 value={replaceKeyword}
                                 onChange={(e) => setReplaceKeyword(e.target.value)}
@@ -243,11 +242,11 @@ export default function NewCampaign() {
                         </div>
 
                         <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
-                            <label style={{ width: '100px', fontWeight: 500, paddingTop: '10px' }}>Replace content ❔:</label>
+                            <label style={{ width: '100px', fontWeight: 500, paddingTop: '10px' }}>{t('replaceContent')} ❔:</label>
                             <textarea
                                 className="input-field"
                                 rows={2}
-                                placeholder="Multiple separated by newlines"
+                                placeholder={t('replaceContentPlaceholder')}
                                 value={replaceContent}
                                 onChange={e => setReplaceContent(e.target.value)}
                             ></textarea>
@@ -256,7 +255,7 @@ export default function NewCampaign() {
 
                         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px' }}>
                             <button className="btn btn-primary" onClick={handleSend} disabled={loading} style={{ opacity: loading ? 0.7 : 1 }}>
-                                {loading ? 'Sending...' : 'Send 🚀'}
+                                {loading ? t('sending') : t('send')}
                             </button>
                         </div>
 
@@ -270,14 +269,14 @@ export default function NewCampaign() {
 
                     {/* Right Side Info */}
                     <div style={{ borderLeft: '1px solid #e5e7eb', paddingLeft: '24px' }}>
-                        <h4 style={{ marginBottom: '16px' }}>SMS group</h4>
+                        <h4 style={{ marginBottom: '16px' }}>{t('smsGroup')}</h4>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '14px', color: '#64748b' }}>
-                            <span>(Selected/Total)</span>
+                            <span>{t('selectedTotal')}</span>
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#64748b' }}>
-                            <span>SMS Content</span>
+                            <span>{t('smsContent')}</span>
                         </div>
-                        <p style={{ marginTop: '20px' }}>Selected Data: {numbers ? numbers.split(',').length : 0}</p>
+                        <p style={{ marginTop: '20px' }}>{t('selectedData')}: {numbers ? numbers.split(',').length : 0}</p>
                     </div>
                 </div>
             </div>

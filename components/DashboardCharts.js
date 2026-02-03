@@ -53,7 +53,7 @@ export function DailyStatsChart({ stats }) {
         ],
     };
 
-    return <Line options={options} data={data} height={100} />;
+    return <Bar options={options} data={data} height={100} />;
 }
 
 export function MonthlyStatsChart() {

@@ -46,9 +46,9 @@ export default function Statistics() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px', color: '#64748b' }}>
                 <span>🏠</span>
                 <span>/</span>
-                <span>Statistics</span>
+                <span>{t('statistics')}</span>
                 <span>/</span>
-                <span>User Statistics</span>
+                <span>{t('userStatistics')}</span>
             </div>
 
             <div className="card">
@@ -61,20 +61,20 @@ export default function Statistics() {
                     <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
                         <thead style={{ background: '#f8fafc', borderBottom: '2px solid #e2e8f0' }}>
                             <tr>
-                                <th style={{ padding: '12px', textAlign: 'left' }}>Time</th>
-                                <th style={{ padding: '12px', textAlign: 'left' }}>Type</th>
-                                <th style={{ padding: '12px', textAlign: 'left' }}>MCC</th>
-                                <th style={{ padding: '12px', textAlign: 'left' }}>MNC</th>
-                                <th style={{ padding: '12px', textAlign: 'left' }}>Phone Number</th>
-                                <th style={{ padding: '12px', textAlign: 'left' }}>Status</th>
-                                <th style={{ padding: '12px', textAlign: 'left' }}>Cost</th>
+                                <th style={{ padding: '12px', textAlign: 'left' }}>{t('time')}</th>
+                                <th style={{ padding: '12px', textAlign: 'left' }}>{t('type')}</th>
+                                <th style={{ padding: '12px', textAlign: 'left' }}>{t('mcc')}</th>
+                                <th style={{ padding: '12px', textAlign: 'left' }}>{t('mnc')}</th>
+                                <th style={{ padding: '12px', textAlign: 'left' }}>{t('phoneNumber')}</th>
+                                <th style={{ padding: '12px', textAlign: 'left' }}>{t('status')}</th>
+                                <th style={{ padding: '12px', textAlign: 'left' }}>{t('cost')}</th>
                             </tr>
                         </thead>
                         <tbody>
                             {campaigns.length === 0 ? (
                                 <tr>
                                     <td colSpan="7" style={{ padding: '24px', textAlign: 'center', color: '#ef4444' }}>
-                                        There are no data records under the current search conditions!
+                                        {t('noData')}
                                     </td>
                                 </tr>
                             ) : (
