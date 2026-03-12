@@ -2,10 +2,10 @@
   "users": [
     {
       "id": "user_1",
-      "username": "0022C0013",
-      "password": "079eUI&H",
+      "username": "User",
+      "password": "",
       "balance": 37.43,
-      "name": "0022C0013",
+      "name": "User",
       "apiKey": "Regenerate"
     }
   ],

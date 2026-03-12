@@ -4,7 +4,7 @@ import { useLanguage } from '@/context/LanguageContext';
 
 export default function Header() {
     const [showDropdown, setShowDropdown] = useState(false);
-    const [user, setUser] = useState({ username: '0022C0013', role: 'consumer' });
+    const [user, setUser] = useState({ username: 'User', role: 'consumer' });
     const [balance, setBalance] = useState('0.00');
     const { language, switchLanguage, t } = useLanguage();
 

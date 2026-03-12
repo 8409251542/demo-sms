@@ -11,7 +11,7 @@ export async function POST(request) {
         let user = await User.findOne({ username });
 
         // Seed if missing (for demo convenience)
-        if (!user && username === '0022C0013' && password === '079eUI&H') {
+        if (!user && username === process.env.DEFAULT_USER && password === process.env.DEFAULT_PASS) {
             user = await User.create({
                 username,
                 password,
